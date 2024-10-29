@@ -248,7 +248,7 @@ export default function page() {
     return (
         <main className='mb-12 grow px-2'>
             <div className='mb-6 grid grid-cols-2 md:grid-cols-12 gap-4'>
-                <div className='mb-4 md:col-span-4 w-full'>
+                <div className='mb-4 col-span-4 md:col-span-4 w-full'>
                     <label className='block text-gray-400 mb-2' htmlFor='range-time'>
                         Time range
                     </label>
@@ -266,13 +266,13 @@ export default function page() {
                         <input className='w-1/2 appearance-none border rounded py-1 px-2 focus:outline-none' type='number' name='max-fare' onChange={buildMap} />
                     </div>
                 </div>
-                <div className='mb-4 md:col-span-2 w-full'>
+                <div className='mb-4 col-span-4 md:col-span-2 w-full'>
                     <label className='block text-gray-400 mb-2' htmlFor='distance'>
                         Trip distance
                     </label>
                     <input className='w-full appearance-none border rounded py-1 px-2 focus:outline-none' type='number' name='distance' onChange={buildMap} />
                 </div>
-                <div className='mb-4 md:col-span-3 w-full'>
+                <div className='mb-4 col-span-4 md:col-span-3 w-full'>
                     <label className='block text-gray-400 mb-2' htmlFor='payment'>
                         Payment type
                     </label>
