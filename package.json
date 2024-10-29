@@ -23,10 +23,9 @@
   },
   "scripts": {
     "migrate": "sequelize db:migrate",
-    "postmigrate": "sequelize db:seed:all",
+    "seed": "sequelize db:seed:all",
     "dev": "next dev",
     "build": "next build",
-    "postbuild": "npm run migrate",
     "start": "next start"
   },
   "keywords": [],
