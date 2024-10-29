@@ -6,8 +6,7 @@ const fetch = require('node-fetch')
 module.exports = {
   async up (queryInterface, Sequelize) {
     const res = await fetch(
-      //'https://data.cityofnewyork.us/resource/gkne-dk5s.json?$limit=100000'
-      'https://data.cityofnewyork.us/resource/gkne-dk5s.json?$limit=3'
+      'https://data.cityofnewyork.us/resource/gkne-dk5s.json?$limit=100000'
     )
 
     const data = await res.json()
