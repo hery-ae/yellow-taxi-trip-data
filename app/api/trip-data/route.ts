@@ -1,8 +1,8 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 import { Op } from 'sequelize'
-import DB from '../../models'
+import DB from '../../../models'
 
-export default function handler(request: NextApiRequest, response: NextApiResponse) {
+export function GET(request: NextApiRequest, response: NextApiResponse) {
     if (request.method !== 'GET') return response.status(405).end()
 
     const where = {} as {
