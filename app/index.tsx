@@ -58,10 +58,10 @@ export default function index() {
     )
 
     const buildMap = () => {
-        let nLayer
+        let nLayer: number
 
         map.current.eachLayer(
-            (layer) => {
+            (layer: any) => {
                 nLayer = (nLayer || 0) + 1
 
                 if (nLayer > 1) map.current.removeLayer(layer)
@@ -91,7 +91,7 @@ export default function index() {
                 .then(
                     (value) => {
                         value.forEach(
-                            (value) => {
+                            (value: any) => {
                                 delete value.id
 
                                 value.pickup_datetime = (new Date(value.pickup_datetime)).toLocaleString()
@@ -99,7 +99,7 @@ export default function index() {
 
                                 const waypoints: any[] = []
 
-                                let line
+                                let line: any
 
                                 const informations = Object.keys(value).filter(
                                     (info) => !(['pickup_point', 'dropoff_point']).some((value) => value === info)
@@ -114,7 +114,7 @@ export default function index() {
                                         value.dropoff_point
                                     ],
                                     {
-                                        pointToLayer: (geoJSONPoint, latLng) => {
+                                        pointToLayer: (geoJSONPoint: any, latLng: any) => {
                                             waypoints.push({
                                                 latLng: latLng
                                             })
@@ -123,7 +123,7 @@ export default function index() {
                                                 Leaflet.current.Routing.osrmv1()
                                                 .route(
                                                     waypoints,
-                                                    (err, routes) => {
+                                                    (err: any, routes: any[]) => {
                                                         if (err) {
                                                             console.log(err)
                                                         } else {
@@ -160,7 +160,7 @@ export default function index() {
                                                                 line.options.styles[0].opacity = 1
 
                                                                 line.eachLayer(
-                                                                    (layer) => {
+                                                                    (layer: any) => {
                                                                         layer.options.opacity = 1
                                                                     }
                                                                 )
@@ -178,7 +178,7 @@ export default function index() {
                                                                 line.options.styles[0].opacity = .5
 
                                                                 line.eachLayer(
-                                                                    (layer) => {
+                                                                    (layer: any) => {
                                                                         layer.options.opacity = .5
                                                                     }
                                                                 )
@@ -205,7 +205,7 @@ export default function index() {
                                                             line.options.styles[0].opacity = 1
 
                                                             line.eachLayer(
-                                                                (layer) => {
+                                                                (layer: any) => {
                                                                     layer.options.opacity = 1
                                                                 }
                                                             )
@@ -223,7 +223,7 @@ export default function index() {
                                                             line.options.styles[0].opacity = .5
 
                                                             line.eachLayer(
-                                                                (layer) => {
+                                                                (layer: any) => {
                                                                     layer.options.opacity = .5
                                                                 }
                                                             )
