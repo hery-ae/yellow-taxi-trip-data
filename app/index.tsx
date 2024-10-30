@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from 'react'
 
 export default function index() {
-    return <p></p>
+    return <p>OK</p>
 /*
 
     const [payments, setPayments] = useState<string[]>()
