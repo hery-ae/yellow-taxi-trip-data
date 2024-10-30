@@ -220,6 +220,9 @@ export default function index() {
 
                             }
                         )
+
+                        if (!(data.length)) map.current.spin(false)
+
                     }
                 )
             }
