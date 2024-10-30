@@ -1,7 +1,3 @@
-'use client'
-
-import React from 'react'
-import { useEffect, useRef, useState } from 'react'
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {
@@ -10,6 +6,11 @@ export const metadata: Metadata = {
         template: '%s - Yellow Taxi Trip Data'
     }
 }
+
+'use client'
+
+import React from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 export default function page() {
     const [payments, setPayments] = useState([])
