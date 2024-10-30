@@ -214,13 +214,13 @@ export default function index() {
                                         }
                                     }
                                 )
+                                .addTo(map.current)
                                 .on(
                                     'layeradd',
                                     () => {
                                         map.current.spin(false)
                                     }
                                 )
-                                .addTo(map.current)
 
                             }
                         )
