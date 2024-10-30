@@ -79,6 +79,8 @@ export default function index() {
             }
         )
 
+        queryParams.push('limit=9999')
+
         fetch(
             ('./api/trip-data?').concat(queryParams.join('&'))
         )
