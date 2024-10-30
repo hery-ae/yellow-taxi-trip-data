@@ -17,6 +17,9 @@ const currentPath = fileURLToPath(import.meta.url)
 
 let db: any = {}
 
+
+db._dir = dirname(currentPath)
+/*
 readdirSync(dirname(currentPath))
 .filter(
     (file) => {
@@ -32,7 +35,7 @@ readdirSync(dirname(currentPath))
         db['model.name'] = 'model'
     }
 )
-
+*/
 Object.keys(db).forEach(modelName => {
     if (db[modelName].associate) {
         db[modelName].associate(db)
