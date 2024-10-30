@@ -19,7 +19,7 @@ const db: any = {}
 const dirname = import.meta.dirname as string
 const filename = import.meta.filename as string
 
-readdirSync(dirname)
+readdirSync(dirname+'/.')
 .filter(file => {
     return (
         file.indexOf('.') !== 0 &&
