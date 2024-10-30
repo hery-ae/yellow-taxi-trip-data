@@ -43,8 +43,6 @@ export async function GET(request: NextRequest) {
         params.limit = Number(request.nextUrl.searchParams.get('limit'))
     }
 
-    if (!(Object.keys(params.where).length)) return NextResponse.json([])
-
     const data = await TripData().findAll(params)
 
     return NextResponse.json(data)

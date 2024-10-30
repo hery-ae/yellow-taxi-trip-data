@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from 'react'
 
 export default function index() {
-    const [payments, setPayments] = useState<string[]>()
+    const [payments, setPayments] = useState<string[]>(['Loading...'])
 
     const Leaflet = useRef<any>()
     const map = useRef<any>()
@@ -12,6 +12,7 @@ export default function index() {
         () => {
             const L = require('leaflet')
 
+            require('leaflet-spin')
             require('leaflet-routing-machine')
 
             L.Marker.prototype.options.icon = L.icon({
@@ -56,7 +57,20 @@ export default function index() {
         []
     )
 
-    const buildMap = () => {
+    const buildMap = (event: React.ChangeEvent) => {
+        const targetElement = event.target as HTMLInputElement || HTMLSelectElement
+
+        if (!(targetElement.value.length)) return
+
+        const startTimeElement = document.querySelector('[name="start-time"]') as HTMLInputElement
+        const endTimeElement = document.querySelector('[name="end-time"]') as HTMLInputElement
+        const minFareElement = document.querySelector('[name="min-fare"]') as HTMLInputElement
+        const maxFareElement = document.querySelector('[name="max-fare"]') as HTMLInputElement
+
+        if (((targetElement.name === startTimeElement.name) && !(endTimeElement.value.length)) || ((targetElement.name === endTimeElement.name) && !(startTimeElement.value.length))) return
+
+        if (((targetElement.name === minFareElement.name) && !(maxFareElement.value.length)) || ((targetElement.name === maxFareElement.name) && !(minFareElement.value.length))) return
+
         let nLayer: number
 
         map.current.eachLayer(
@@ -67,6 +81,8 @@ export default function index() {
 
             }
         )
+
+        map.current.spin(true)
 
         const queryParams: string[] = []
 
@@ -154,12 +170,6 @@ export default function index() {
                                                             )
                                                         }
                                                     )
-                                                    .on(
-                                                        'tooltipclose',
-                                                        () => {
-                                                            if (line) map.current.removeLayer(line)
-                                                        }
-                                                    )
                                                 )
 
                                             }
@@ -197,17 +207,17 @@ export default function index() {
                                                         )
                                                     }
                                                 )
-                                                .on(
-                                                    'tooltipclose',
-                                                    () => {
-                                                        if (line) map.current.removeLayer(line)
-                                                    }
-                                                )
                                             )
                                         },
                                         style: {
-                                            fillOpacity: .9
+                                            fillOpacity: .7
                                         }
+                                    }
+                                )
+                                .on(
+                                    'layeradd',
+                                    () => {
+                                        map.current.spin(false)
                                     }
                                 )
                                 .addTo(map.current)

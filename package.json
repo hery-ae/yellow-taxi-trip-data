@@ -6,6 +6,7 @@
   "dependencies": {
     "leaflet": "1.9.4",
     "leaflet-routing-machine": "3.2.12",
+    "leaflet-spin": "^1.1.2",
     "next": "15.0.2",
     "pg": "8.13.1",
     "react": "19.0.0-rc-02c0e824-20241028",
