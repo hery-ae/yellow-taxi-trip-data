@@ -16,11 +16,14 @@ const sequelize = new Sequelize({
 //const currentPath = fileURLToPath(import.meta.url)
 const db: any = {}
 
-readdirSync(import.meta.dirname)
+const dirname = import.meta.dirname as string
+const filename = import.meta.filename as string
+
+readdirSync(dirname)
 .filter(file => {
     return (
         file.indexOf('.') !== 0 &&
-        file !== basename(import.meta.filename)
+        file !== basename(filename)
     )
 })
 .forEach(file => {
