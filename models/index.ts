@@ -19,6 +19,7 @@ let db: any = {}
 
 
 db._dir = dirname(currentPath)
+db._cwd = process.cwd()
 /*
 readdirSync(dirname(currentPath))
 .filter(
