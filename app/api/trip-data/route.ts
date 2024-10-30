@@ -1,10 +1,8 @@
-import { NextApiRequest, NextApiResponse } from 'next'
+import { NextRequest, NextResponse } from 'next/server'
 import { Op } from 'sequelize'
 import DB from '../../../models'
 
-export function GET(request: NextApiRequest, response: NextApiResponse) {
-    if (request.method !== 'GET') return response.status(405).end()
-
+export async function GET(request: NextRequest) {
     const where = {} as {
         pickup_datetime?: any,
         fare_amount?: any,
@@ -12,33 +10,31 @@ export function GET(request: NextApiRequest, response: NextApiResponse) {
         payment_type?: string
     }
 
-    if (request.query.payment) {
-        where.payment_type = request.query.payment as string
+    if (request.nextUrl.searchParams.has('payment')) {
+        where.payment_type = request.nextUrl.searchParams.get('payment')
     }
 
-    if (request.query.distance) {
-        where.trip_distance = request.query.distance as string
+    if (request.nextUrl.searchParams.has('distance')) {
+        where.trip_distance = request.nextUrl.searchParams.get('distance')
     }
 
-    if (request.query['min-fare'] && request.query['max-fare']) {
+    if (request.nextUrl.searchParams.has('min-fare') && request.nextUrl.searchParams.has('max-fare')) {
         where.fare_amount = {
-            [Op.gte]: request.query['min-fare'],
-            [Op.lte]: request.query['max-fare']
+            [Op.gte]: request.nextUrl.searchParams.get('min-fare'),
+            [Op.lte]: request.nextUrl.searchParams.get('max-fare')
         }
     }
 
-    if (request.query['start-time'] && request.query['end-time']) {
+    if (request.nextUrl.searchParams.has('start-time') && request.nextUrl.searchParams.has('end-time')) {
         where.pickup_datetime = {
-            [Op.gte]: new Date(request.query['start-time'] as string),
-            [Op.lte]: new Date(request.query['end-time'] as string)
+            [Op.gte]: new Date(request.nextUrl.searchParams.get('start-time')),
+            [Op.lte]: new Date(request.nextUrl.searchParams.get('end-time'))
         }
     }
 
-    return DB.TripData.findAll({
+    const data = await DB.TripData.findAll({
         where: where
     })
-    .then(
-        (value) => response.status(200).json(value),
-        () => response.status(500).end()
-    )
+
+    return NextResponse.json(data)
 }
