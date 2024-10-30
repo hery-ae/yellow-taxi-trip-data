@@ -1,8 +1,7 @@
-import { Sequelize, Model, DataTypes } from 'sequelize'
+import { Model, DataTypes } from 'sequelize'
+import sequelize from '@/src/db/sequelize'
 
-class TripData extends Model {}
-
-export function model(sequelize: Sequelize) {
+export function model() {
     TripData.init({
         vendor_id: DataTypes.STRING,
         pickup_datetime: DataTypes.DATE,
@@ -27,4 +26,28 @@ export function model(sequelize: Sequelize) {
     })
 
     return TripData
+}
+
+interface Geometry {
+    type: 'Point',
+    coordinates: string[]
+}
+
+class TripData extends Model {
+    declare vendor_id: string
+    declare pickup_datetime: Date
+    declare dropoff_datetime: Date
+    declare passenger_count: number
+    declare trip_distance: string
+    declare pickup_point: Geometry
+    declare store_and_fwd_flag: string
+    declare dropoff_point: Geometry
+    declare payment_type: string
+    declare fare_amount: string
+    declare mta_tax: string
+    declare tip_amount: string
+    declare tolls_amount: string
+    declare total_amount: string
+    declare imp_surcharge: string
+    declare rate_code: number
 }
