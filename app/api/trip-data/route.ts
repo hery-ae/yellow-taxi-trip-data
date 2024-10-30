@@ -2,15 +2,19 @@ import { NextRequest, NextResponse } from 'next/server'
 import { Op } from 'sequelize'
 import TripData from '../../../src/models/trip-data'
 
+interface ParamOption {
+    where: {
+        pickup_datetime?: any,
+        fare_amount?: any,
+        trip_distance?: string,
+        payment_type?: string
+    },
+    limit?: number
+}
+
 export async function GET(request: NextRequest) {
-    const params = {} as {
-        where: {
-            pickup_datetime?: any,
-            fare_amount?: any,
-            trip_distance?: string,
-            payment_type?: string
-        },
-        limit?: number
+    const params: ParamOption = {
+        where: {}
     }
 
     if (request.nextUrl.searchParams.has('payment')) {
