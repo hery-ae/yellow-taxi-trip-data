@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { Op } from 'sequelize'
-import DB from '../../../src/models'
+import TripData from '../../../src/models/trip-data'
 
 export async function GET(request: NextRequest) {
     const where = {} as {
@@ -32,7 +32,7 @@ export async function GET(request: NextRequest) {
         }
     }
 
-    const data = await DB.TripData.findAll({
+    const data = await TripData().findAll({
         where: where
     })
 

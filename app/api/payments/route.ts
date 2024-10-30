@@ -1,11 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server'
-import DB from '../../../src/models'
+import TripData from '../../../src/models/trip-data'
 
 export async function GET(request: NextRequest) {
-
-return NextResponse.json(DB)
-
-    const data = await DB.TripData.findAll({
+    const data = await TripData().findAll({
         group: 'payment_type',
         attributes: ['payment_type']
     })

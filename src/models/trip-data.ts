@@ -1,7 +1,7 @@
 import { Model, DataTypes } from 'sequelize'
 import sequelize from '@/src/db/sequelize'
 
-export function model() {
+export default function model() {
     TripData.init({
         vendor_id: DataTypes.STRING,
         pickup_datetime: DataTypes.DATE,
