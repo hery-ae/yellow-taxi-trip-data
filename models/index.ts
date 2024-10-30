@@ -21,7 +21,7 @@ let db: any = {}
 db._dir = dirname(currentPath)
 db._cwd = process.cwd()
 db._res = path.resolve(db._cwd, db._dir)
-db._rdir = readdirSync(path.resolve(db._cwd, db._dir))
+//db._rdir = readdirSync(path.resolve(db._cwd, db._dir))
 /*
 readdirSync(dirname(currentPath))
 .filter(
