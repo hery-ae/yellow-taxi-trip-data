@@ -1,8 +1,8 @@
-import { Model, DataTypes } from 'sequelize'
+import { Sequelize, Model, DataTypes } from 'sequelize'
 
 class TripData extends Model {}
 
-export function model(sequelize) {
+export function model(sequelize: Sequelize) {
     TripData.init({
         vendor_id: DataTypes.STRING,
         pickup_datetime: DataTypes.DATE,
