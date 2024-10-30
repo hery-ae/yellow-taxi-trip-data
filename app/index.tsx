@@ -3,10 +3,10 @@
 import { useEffect, useRef, useState } from 'react'
 
 export default function index() {
-    return <></>
+    return <p></p>
+/*
 
-
-    const [payments, setPayments] = useState([])
+    const [payments, setPayments] = useState<string[]>()
 
     const Leaflet = useRef<any>()
     const map = useRef<any>()
@@ -298,4 +298,5 @@ export default function index() {
             <div className='w-full h-svh' id='map'></div>
         </main>
     )
+*/
 }
