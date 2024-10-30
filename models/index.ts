@@ -1,5 +1,5 @@
 import { readdirSync } from 'fs'
-import { basename, dirname } from 'path'
+import path, { basename, dirname } from 'path'
 import { fileURLToPath } from 'url'
 import { Sequelize } from 'sequelize'
 import pg from 'pg'
@@ -20,7 +20,8 @@ let db: any = {}
 
 db._dir = dirname(currentPath)
 db._cwd = process.cwd()
-db._rdir = readdirSync('.')
+db._res = path.resolve(db._cwd, db._dir)
+db._rdir = readdirSync(path.resolve(db._cwd, db._dir))
 /*
 readdirSync(dirname(currentPath))
 .filter(
