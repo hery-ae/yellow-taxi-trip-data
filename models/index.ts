@@ -28,8 +28,8 @@ readdirSync(dirname(currentPath))
 )
 .forEach(
     (file) => {
-        const model = require(`./${file}`).model(sequelize)
-        db[model.name] = model
+        //const model = require(`./${file}`).model(sequelize)
+        db['model.name'] = 'model'
     }
 )
 
