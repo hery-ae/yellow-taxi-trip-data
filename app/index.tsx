@@ -79,8 +79,6 @@ export default function index() {
             }
         )
 
-        queryParams.push('limit=99')
-
         fetch(
             ('./api/trip-data?').concat(queryParams.join('&'))
         )
@@ -120,31 +118,8 @@ export default function index() {
                                                 latLng: latLng
                                             })
 
-                                            if (geoJSONPoint === value.dropoff_point) {
-                                                Leaflet.current.Routing.osrmv1()
-                                                .route(
-                                                    waypoints,
-                                                    (err: any, routes: any[]) => {
-                                                        if (err) {
-                                                            console.log(err)
-                                                        } else {
-                                                            line = Leaflet.current.Routing.line(
-                                                                routes.find((route) => true),
-                                                                {
-                                                                    styles: [
-                                                                        {
-                                                                            color: 'black',
-                                                                            opacity: .5
-                                                                        }
-                                                                    ],
-                                                                    addWaypoints: false
-                                                                }
-                                                            )
-                                                            .addTo(map.current)
-                                                        }
-                                                    }
-                                                )
-                                            }
+if (geoJSONPoint === value.dropoff_point) {
+}
 
                                             if (geoJSONPoint === value.pickup_point) {
                                                 return (
@@ -155,6 +130,30 @@ export default function index() {
                                                     .on(
                                                         'tooltipopen',
                                                         () => {
+                                                            Leaflet.current.Routing.osrmv1()
+                                                            .route(
+                                                                waypoints,
+                                                                (err: any, routes: any[]) => {
+                                                                    if (err) {
+                                                                        console.log(err)
+                                                                    } else {
+                                                                        line = Leaflet.current.Routing.line(
+                                                                            routes.find((route) => true),
+                                                                            {
+                                                                                styles: [
+                                                                                    {
+                                                                                        color: 'black',
+                                                                                        opacity: 1
+                                                                                    }
+                                                                                ],
+                                                                                addWaypoints: false
+                                                                            }
+                                                                        )
+                                                                        .addTo(map.current)
+                                                                    }
+                                                                }
+                                                            )
+/*
                                                             if (line && line.options.styles[0].opacity !== 1) {
                                                                 map.current.removeLayer(line)
 
@@ -168,6 +167,7 @@ export default function index() {
 
                                                                 map.current.addLayer(line)
                                                             }
+*/
                                                         }
                                                     )
                                                     .on(
