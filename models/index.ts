@@ -1,6 +1,6 @@
 import { readdirSync } from 'fs'
-import { basename } from 'path'
-//import { fileURLToPath } from 'url'
+import { basename, dirname } from 'path'
+import { fileURLToPath } from 'url'
 import { Sequelize } from 'sequelize'
 import pg from 'pg'
 
@@ -13,17 +13,14 @@ const sequelize = new Sequelize({
     dialectModule: pg
 })
 
-//const currentPath = fileURLToPath(import.meta.url)
+const currentPath = fileURLToPath(import.meta.url)
 const db: any = {}
 
-const dirname = import.meta.dirname as string
-const filename = import.meta.filename as string
-
-readdirSync(dirname+'/.')
+readdirSync(dirname(currentPath))
 .filter(file => {
     return (
         file.indexOf('.') !== 0 &&
-        file !== basename(filename)
+        file !== basename(currentPath)
     )
 })
 .forEach(file => {
