@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
-import DB from '../../../models'
+import DB from '../../../src/models'
 
 export async function GET(request: NextRequest) {
 
