@@ -14,7 +14,8 @@ const sequelize = new Sequelize({
 })
 
 const currentPath = fileURLToPath(import.meta.url)
-const db: any = {}
+
+let db: any = {}
 
 readdirSync(dirname(currentPath))
 .filter(
@@ -26,10 +27,8 @@ readdirSync(dirname(currentPath))
     }
 )
 .forEach(
-    async (file) => {
-        const res = await import(`./${file}`)
-        const model = res.model(sequelize)
-
+    (file) => {
+        const model = require(`./${file}`).model(sequelize)
         db[model.name] = model
     }
 )
