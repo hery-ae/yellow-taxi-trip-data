@@ -5,10 +5,10 @@ import { Sequelize } from 'sequelize'
 import pg from 'pg'
 
 const sequelize = new Sequelize({
-    username: process.env['DB_USERNAME'] || 'postgres',
-    password: process.env['DB_PASSWORD'] || null,
-    database: process.env['DB_DATABASE'] || 'yellow_taxi_trip_data',
-    host: process.env['DB_HOST'] || 'localhost',
+    username: process.env['DBUSERNAME'] || 'postgres',
+    password: process.env['DBPASSWORD'] || null,
+    database: process.env['DBDATABASE'] || 'yellow_taxi_trip_data',
+    host: process.env['DBHOST'] || 'localhost',
     dialect: 'postgres',
     dialectModule: pg
 })
