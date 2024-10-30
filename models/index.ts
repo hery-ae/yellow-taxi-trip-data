@@ -17,16 +17,22 @@ const currentPath = fileURLToPath(import.meta.url)
 const db: any = {}
 
 readdirSync(dirname(currentPath))
-.filter(file => {
-    return (
-        file.indexOf('.') !== 0 &&
-        file !== basename(currentPath)
-    )
-})
-.forEach(file => {
-    const model = require(`./${file}`).model(sequelize)
-    db[model.name] = model
-})
+.filter(
+    (file) => {
+        return (
+            file.indexOf('.') !== 0 &&
+            file !== basename(currentPath)
+        )
+    }
+)
+.forEach(
+    async (file) => {
+        const res = await import(`./${file}`)
+        const model = res.model(sequelize)
+
+        db[model.name] = model
+    }
+)
 
 Object.keys(db).forEach(modelName => {
     if (db[modelName].associate) {
