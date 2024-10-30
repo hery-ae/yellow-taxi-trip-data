@@ -4,7 +4,7 @@
 module.exports = {
   async up (queryInterface, Sequelize) {
     const res = await fetch(
-      'https://data.cityofnewyork.us/resource/gkne-dk5s.json?$limit=10000'//0'
+      'https://data.cityofnewyork.us/resource/gkne-dk5s.json?$limit=99999'
     )
 
     const data = await res.json()
