@@ -1,6 +1,15 @@
 'use client'
 
+import React from 'react'
 import { useEffect, useRef, useState } from 'react'
+import { Metadata } from 'next'
+
+export const metadata: Metadata = {
+    title: {
+        default: 'Yellow Taxi Trip Data',
+        template: '%s - Yellow Taxi Trip Data'
+    }
+}
 
 export default function page() {
     const [payments, setPayments] = useState([])
@@ -68,12 +77,14 @@ export default function page() {
             }
         )
 
-        const queryParams = []
+        const queryParams: string[] = []
 
         document.querySelectorAll('input, select')
         .forEach(
-            (element: HTMLInputElement | HTMLSelectElement) => {
-                if (element.value) queryParams.push((element.name).concat('=').concat(encodeURIComponent(element.value)))
+            (element) => {
+                const inputElement = element as HTMLInputElement
+
+                if (inputElement.value) queryParams.push((inputElement.name).concat('=').concat(encodeURIComponent(inputElement.value)))
             }
         )
 
@@ -94,7 +105,7 @@ export default function page() {
                                 value.pickup_datetime = (new Date(value.pickup_datetime)).toLocaleString()
                                 value.dropoff_datetime = (new Date(value.dropoff_datetime)).toLocaleString()
 
-                                const waypoints = []
+                                const waypoints: any[] = []
 
                                 let line
 
@@ -102,7 +113,7 @@ export default function page() {
                                     (info) => !(['pickup_point', 'dropoff_point']).some((value) => value === info)
                                 )
                                 .map(
-                                    (info) => `${info.charAt(0).toUpperCase().concat(info.substring(1).replaceAll('_', ' '))}: ${value[info]}`
+                                    (info) => `${info.charAt(0).toUpperCase().concat(info.substring(1).replace(/_/g, ' '))}: ${value[info]}`
                                 )
 
                                 Leaflet.current.geoJSON(

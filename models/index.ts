@@ -6,7 +6,7 @@ import pg from 'pg'
 
 const sequelize = new Sequelize({
     username: process.env['DBUSERNAME'] || 'postgres',
-    password: process.env['DBPASSWORD'] || null,
+    password: process.env['DBPASSWORD'] || '',
     database: process.env['DBDATABASE'] || 'yellow_taxi_trip_data',
     host: process.env['DBHOST'] || 'localhost',
     dialect: 'postgres',

@@ -11,11 +11,11 @@ export async function GET(request: NextRequest) {
     }
 
     if (request.nextUrl.searchParams.has('payment')) {
-        where.payment_type = request.nextUrl.searchParams.get('payment')
+        where.payment_type = request.nextUrl.searchParams.get('payment') as string
     }
 
     if (request.nextUrl.searchParams.has('distance')) {
-        where.trip_distance = request.nextUrl.searchParams.get('distance')
+        where.trip_distance = request.nextUrl.searchParams.get('distance') as string
     }
 
     if (request.nextUrl.searchParams.has('min-fare') && request.nextUrl.searchParams.has('max-fare')) {
@@ -27,8 +27,8 @@ export async function GET(request: NextRequest) {
 
     if (request.nextUrl.searchParams.has('start-time') && request.nextUrl.searchParams.has('end-time')) {
         where.pickup_datetime = {
-            [Op.gte]: new Date(request.nextUrl.searchParams.get('start-time')),
-            [Op.lte]: new Date(request.nextUrl.searchParams.get('end-time'))
+            [Op.gte]: new Date(request.nextUrl.searchParams.get('start-time') as string),
+            [Op.lte]: new Date(request.nextUrl.searchParams.get('end-time') as string)
         }
     }
 
