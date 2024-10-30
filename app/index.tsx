@@ -120,9 +120,6 @@ export default function index() {
                                                 latLng: latLng
                                             })
 
-if (geoJSONPoint === value.dropoff_point) {
-}
-
                                             if (geoJSONPoint === value.pickup_point) {
                                                 return (
                                                     Leaflet.current.circleMarker(latLng)
@@ -155,39 +152,12 @@ if (geoJSONPoint === value.dropoff_point) {
                                                                     }
                                                                 }
                                                             )
-/*
-                                                            if (line && line.options.styles[0].opacity !== 1) {
-                                                                map.current.removeLayer(line)
-
-                                                                line.options.styles[0].opacity = 1
-
-                                                                line.eachLayer(
-                                                                    (layer: any) => {
-                                                                        layer.options.opacity = 1
-                                                                    }
-                                                                )
-
-                                                                map.current.addLayer(line)
-                                                            }
-*/
                                                         }
                                                     )
                                                     .on(
                                                         'tooltipclose',
                                                         () => {
-                                                            if (line && line.options.styles[0].opacity !== .5) {
-                                                                map.current.removeLayer(line)
-
-                                                                line.options.styles[0].opacity = .5
-
-                                                                line.eachLayer(
-                                                                    (layer: any) => {
-                                                                        layer.options.opacity = .5
-                                                                    }
-                                                                )
-
-                                                                map.current.addLayer(line)
-                                                            }
+                                                            if (line) map.current.removeLayer(line)
                                                         }
                                                     )
                                                 )
@@ -202,37 +172,35 @@ if (geoJSONPoint === value.dropoff_point) {
                                                 .on(
                                                     'tooltipopen',
                                                     () => {
-                                                        if (line && line.options.styles[0].opacity !== 1) {
-                                                            map.current.removeLayer(line)
-
-                                                            line.options.styles[0].opacity = 1
-
-                                                            line.eachLayer(
-                                                                (layer: any) => {
-                                                                    layer.options.opacity = 1
+                                                        Leaflet.current.Routing.osrmv1()
+                                                        .route(
+                                                            waypoints,
+                                                            (err: any, routes: any[]) => {
+                                                                if (err) {
+                                                                    console.log(err)
+                                                                } else {
+                                                                    line = Leaflet.current.Routing.line(
+                                                                        routes.find((route) => true),
+                                                                        {
+                                                                            styles: [
+                                                                                {
+                                                                                    color: 'black',
+                                                                                    opacity: 1
+                                                                                }
+                                                                            ],
+                                                                            addWaypoints: false
+                                                                        }
+                                                                    )
+                                                                    .addTo(map.current)
                                                                 }
-                                                            )
-
-                                                            map.current.addLayer(line)
-                                                        }
+                                                            }
+                                                        )
                                                     }
                                                 )
                                                 .on(
                                                     'tooltipclose',
                                                     () => {
-                                                        if (line && line.options.styles[0].opacity !== .5) {
-                                                            map.current.removeLayer(line)
-
-                                                            line.options.styles[0].opacity = .5
-
-                                                            line.eachLayer(
-                                                                (layer: any) => {
-                                                                    layer.options.opacity = .5
-                                                                }
-                                                            )
-
-                                                            map.current.addLayer(line)
-                                                        }
+                                                        if (line) map.current.removeLayer(line)
                                                     }
                                                 )
                                             )
