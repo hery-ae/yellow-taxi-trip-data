@@ -8,6 +8,14 @@ export async function GET(request: NextRequest) {
     })
 
     return NextResponse.json(
-        data.map((value) => value.payment_type)
+        data.map(
+            (
+                value: {
+                    payment_type: string
+                }
+            ) => {
+                return value.payment_type
+            }
+        )
     )
 }
