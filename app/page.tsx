@@ -1,5 +1,5 @@
 import { Metadata } from 'next'
-import Index from './index'
+//import Index from './index'
 
 export const metadata: Metadata = {
     title: {
@@ -9,5 +9,6 @@ export const metadata: Metadata = {
 }
 
 export default function page() {
-    return <Index />
+    return <p>OK PAGE</p>
+    //return <Index />
 }
