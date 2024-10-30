@@ -1,7 +1,5 @@
 'use strict';
 
-const fetch = require('node-fetch')
-
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up (queryInterface, Sequelize) {
