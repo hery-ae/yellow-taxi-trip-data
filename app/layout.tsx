@@ -1,4 +1,4 @@
-import '../styles/app.css'
+import '../src/styles/app.css'
 
 import { Metadata } from 'next'
 import Header from '../src/components/header'
