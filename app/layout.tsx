@@ -10,12 +10,16 @@ export const metadata: Metadata = {
     }
 }
 
-export default function app({ children }: { children: React.ReactNode }) {
+export default function layout({ children }: { children: React.ReactNode }) {
     return (
-        <div className='container max-w-screen-lg min-h-screen flex flex-col mx-auto'>
-            <Header appTitle='Yellow Taxi Trip Data' />
-            {children}
-            <Footer companyName='PT ...' />
-        </div>
+        <html>
+            <body>
+                <div className='container max-w-screen-lg min-h-screen flex flex-col mx-auto'>
+                    <Header appTitle='Yellow Taxi Trip Data' />
+                    {children}
+                    <Footer companyName='PT ...' />
+                </div>
+            </body>
+        </html>
     )
 }
