@@ -1,6 +1,8 @@
+import React from 'react'
+
+
 import '../styles/app.css'
 
-import React from 'react'
 import { Metadata } from 'next'
 import Header from '../components/header'
 import Footer from '../components/footer'
