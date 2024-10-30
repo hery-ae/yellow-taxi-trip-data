@@ -3,9 +3,6 @@
 import { useEffect, useRef, useState } from 'react'
 
 export default function index() {
-    return <p>OK</p>
-/*
-
     const [payments, setPayments] = useState<string[]>()
 
     const Leaflet = useRef<any>()
@@ -298,5 +295,4 @@ export default function index() {
             <div className='w-full h-svh' id='map'></div>
         </main>
     )
-*/
 }
