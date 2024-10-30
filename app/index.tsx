@@ -1,11 +1,11 @@
 'use client'
 
-import React from 'react'
-
-
 import { useEffect, useRef, useState } from 'react'
 
 export default function index() {
+    return <></>
+
+
     const [payments, setPayments] = useState([])
 
     const Leaflet = useRef<any>()

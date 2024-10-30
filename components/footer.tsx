@@ -1,6 +1,3 @@
-import React from 'react'
-
-
 export default function footer({ companyName }: { companyName: string }) {
     return (
         <footer className='border-t py-2'>
