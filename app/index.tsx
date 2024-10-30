@@ -106,9 +106,9 @@ export default function index() {
 
                 res.json()
                 .then(
-                    (value) => {
-                        value.forEach(
-                            (value: any) => {
+                    (data) => {
+                        data.forEach(
+                            (value: any, index: number) => {
                                 delete value.id
 
                                 value.pickup_datetime = (new Date(value.pickup_datetime)).toLocaleString()
@@ -174,6 +174,8 @@ export default function index() {
 
                                             }
 
+                                            if ((index +1) === data.length) map.current.spin(false)
+
                                             return (
                                                 Leaflet.current.marker(latLng)
                                                 .bindTooltip(
@@ -220,9 +222,6 @@ export default function index() {
                         )
                     }
                 )
-
-                map.current.spin(false)
-
             }
         )
 
