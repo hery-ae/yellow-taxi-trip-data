@@ -9,7 +9,8 @@ module.exports = (
         {
             host: process.env['DBHOST'] || 'localhost',
             dialect: 'postgres',
-            dialectModule: pg
+            dialectModule: pg,
+            logging: false
         }
     )
 )

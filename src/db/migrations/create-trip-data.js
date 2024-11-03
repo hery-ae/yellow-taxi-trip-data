@@ -1,7 +1,7 @@
 'use strict'
 
-module.exports = (sequelize, DataTypes) => {
-  Sequelize.queryInterface
+module.exports = (sequelize, DataTypes) => (
+  sequelize.queryInterface
   .createTable(
     'TripData', {
       id: {
@@ -60,4 +60,4 @@ module.exports = (sequelize, DataTypes) => {
       }
     }
   )
-}
+)

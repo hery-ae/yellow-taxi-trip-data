@@ -58,7 +58,7 @@ export default function index() {
     )
 
     const buildMap = (event: React.ChangeEvent) => {
-        const targetElement = event.target as HTMLInputElement || HTMLSelectElement
+        const targetElement = event.target as HTMLInputElement
 
         if (!(targetElement.value.length)) return
 
