@@ -1,8 +1,8 @@
-import '../src/styles/app.css'
+import '@/styles/app.css'
 
 import { Metadata } from 'next'
-import Header from '../src/components/header'
-import Footer from '../src/components/footer'
+import Header from '@/components/header'
+import Footer from '@/components/footer'
 
 export const metadata: Metadata = {
     icons: {

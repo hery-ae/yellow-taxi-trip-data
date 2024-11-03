@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { Op } from 'sequelize'
-import TripData from '../../../src/models/trip-data'
+import TripData from '@/models/trip-data'
 
 interface ParamOption {
     where: {

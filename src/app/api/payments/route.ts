@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
-import TripData from '../../../src/models/trip-data'
+import TripData from '@/models/trip-data'
 
 export async function GET(request: NextRequest) {
     const data = await TripData().findAll({

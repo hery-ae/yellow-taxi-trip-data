@@ -1,5 +1,5 @@
 import { Model, DataTypes } from 'sequelize'
-import sequelize from '@/src/db/sequelize'
+import sequelize from '@/db/sequelize'
 
 export default function model() {
     TripData.init({
